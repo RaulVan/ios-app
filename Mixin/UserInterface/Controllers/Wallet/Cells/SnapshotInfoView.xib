@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ijr-9n-V7i" customClass="SnapshotInfoView" customModule="Mixin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O28-jb-LMI">
+                    <rect key="frame" x="290" y="0.0" width="124" height="62"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.98039215690000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qe-6k-3Eu">
+                    <rect key="frame" x="19" y="10" width="42" height="42"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0j-e3-F0C">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4qe-6k-3Eu" secondAttribute="height" multiplier="1:1" id="8hP-zU-rsb"/>
+                        <constraint firstItem="G0j-e3-F0C" firstAttribute="leading" secondItem="4qe-6k-3Eu" secondAttribute="leading" id="VAv-De-ior"/>
+                        <constraint firstAttribute="trailing" secondItem="G0j-e3-F0C" secondAttribute="trailing" id="be8-fh-oSH"/>
+                        <constraint firstAttribute="bottom" secondItem="G0j-e3-F0C" secondAttribute="bottom" id="dZr-gP-xRo"/>
+                        <constraint firstAttribute="height" constant="42" id="oAM-TL-IEp"/>
+                        <constraint firstItem="G0j-e3-F0C" firstAttribute="top" secondItem="4qe-6k-3Eu" secondAttribute="top" id="vbQ-k4-w3m"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WQE-nF-HKX">
+                    <rect key="frame" x="77" y="0.0" width="317" height="62"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Transfer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-wr-JOF">
+                            <rect key="frame" x="0.0" y="22.5" width="53.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="+20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQ8-gM-RMa" customClass="InsetLabel" customModule="Mixin" customModuleProvider="target">
+                            <rect key="frame" x="63.5" y="21.5" width="222.5" height="19"/>
+                            <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="19"/>
+                            <color key="textColor" red="0.16078431369999999" green="0.74509803919999995" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ML-2j-R5f">
+                            <rect key="frame" x="296" y="24" width="21" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="O28-jb-LMI" secondAttribute="bottom" id="3It-m8-ZJX"/>
+                <constraint firstItem="WQE-nF-HKX" firstAttribute="leading" secondItem="4qe-6k-3Eu" secondAttribute="trailing" constant="16" id="7rY-ru-m0c"/>
+                <constraint firstItem="O28-jb-LMI" firstAttribute="width" secondItem="ijr-9n-V7i" secondAttribute="width" multiplier="0.3" id="BEP-E0-1ol"/>
+                <constraint firstAttribute="trailing" secondItem="WQE-nF-HKX" secondAttribute="trailing" constant="20" id="Ly3-ZS-eec"/>
+                <constraint firstAttribute="trailing" secondItem="O28-jb-LMI" secondAttribute="trailing" id="Q64-tw-qET"/>
+                <constraint firstAttribute="bottom" secondItem="WQE-nF-HKX" secondAttribute="bottom" id="YEO-tf-Zox"/>
+                <constraint firstItem="4qe-6k-3Eu" firstAttribute="leading" secondItem="ijr-9n-V7i" secondAttribute="leading" constant="19" id="bXz-bR-KJU"/>
+                <constraint firstItem="O28-jb-LMI" firstAttribute="top" secondItem="ijr-9n-V7i" secondAttribute="top" id="bo4-lj-Ljf"/>
+                <constraint firstItem="WQE-nF-HKX" firstAttribute="top" secondItem="ijr-9n-V7i" secondAttribute="top" id="sph-GP-Oqq"/>
+                <constraint firstItem="4qe-6k-3Eu" firstAttribute="centerY" secondItem="ijr-9n-V7i" secondAttribute="centerY" id="vKQ-sl-Kmz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="amountLabel" destination="JQ8-gM-RMa" id="DZx-aC-jly"/>
+                <outlet property="iconButton" destination="G0j-e3-F0C" id="TjQ-Hl-FjF"/>
+                <outlet property="iconWrapperView" destination="4qe-6k-3Eu" id="x07-qD-iLb"/>
+                <outlet property="iconWrapperViewHeightConstraint" destination="oAM-TL-IEp" id="Yef-pU-oGL"/>
+                <outlet property="pendingDepositProgressConstraint" destination="BEP-E0-1ol" id="4Rx-R2-cdH"/>
+                <outlet property="pendingDepositProgressView" destination="O28-jb-LMI" id="O0f-Be-gCU"/>
+                <outlet property="symbolLabel" destination="3ML-2j-R5f" id="GaU-57-KUQ"/>
+                <outlet property="titleLabel" destination="Qtg-wr-JOF" id="sEg-pu-svB"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="266.51785714285711"/>
+        </view>
+    </objects>
+</document>

@@ -439,7 +439,8 @@ class ConversationViewController: UIViewController {
                         return
                     }
                     DispatchQueue.main.async {
-                        self?.navigationController?.pushViewController(TransactionViewController.instance(asset: asset, snapshot: snapshot), animated: true)
+                        let vc = SnapshotViewController.instance(asset: asset, snapshot: snapshot)
+                        self?.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
             } else if message.category == MessageCategory.APP_CARD.rawValue, let action = message.appCard?.action {

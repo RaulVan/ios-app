@@ -7,6 +7,7 @@ class AssetViewController: UIViewController {
     
     private enum ReuseId {
         static let header = "header"
+        static let cell = "cell"
     }
     
     private let loadMoreThreshold = 20
@@ -24,7 +25,7 @@ class AssetViewController: UIViewController {
         updateTableHeaderFooterView()
         tableHeaderView.render(asset: asset)
         tableHeaderView.sizeToFit()
-        tableView.register(R.nib.snapshotCell)
+        tableView.register(AvatarSnapshotCell.self, forCellReuseIdentifier: ReuseId.cell)
         tableView.register(AssetHeaderView.self, forHeaderFooterViewReuseIdentifier: ReuseId.header)
         tableView.dataSource = self
         tableView.delegate = self
@@ -147,8 +148,9 @@ extension AssetViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.snapshot, for: indexPath)!
-        cell.render(snapshot: snapshotDataSource.snapshots[indexPath.section][indexPath.row], asset: asset)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseId.cell, for: indexPath) as! AvatarSnapshotCell
+        let snapshot = snapshotDataSource.snapshots[indexPath.section][indexPath.row]
+        cell.render(snapshot: snapshot, asset: asset)
         cell.delegate = self
         return cell
     }
@@ -161,7 +163,7 @@ extension AssetViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let snapshot = snapshotDataSource.snapshots[indexPath.section][indexPath.row]
         if snapshot.type != SnapshotType.pendingDeposit.rawValue {
-            let vc = TransactionViewController.instance(asset: asset, snapshot: snapshot)
+            let vc = SnapshotViewController.instance(asset: asset, snapshot: snapshot)
             navigationController?.pushViewController(vc, animated: true)
         }
     }

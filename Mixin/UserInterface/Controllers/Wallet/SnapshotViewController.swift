@@ -1,6 +1,6 @@
 import UIKit
 
-class TransactionViewController: UIViewController {
+class SnapshotViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerContentStackView: UIStackView!
@@ -50,7 +50,7 @@ class TransactionViewController: UIViewController {
     }
     
     class func instance(asset: AssetItem, snapshot: SnapshotItem) -> UIViewController {
-        let vc = Storyboard.wallet.instantiateViewController(withIdentifier: "transaction") as! TransactionViewController
+        let vc = R.storyboard.wallet.snapshot()!
         vc.asset = asset
         vc.snapshot = snapshot
         let container = ContainerViewController.instance(viewController: vc, title: Localized.TRANSACTION_TITLE)
@@ -60,7 +60,7 @@ class TransactionViewController: UIViewController {
     
 }
 
-extension TransactionViewController: ContainerViewControllerDelegate {
+extension SnapshotViewController: ContainerViewControllerDelegate {
     
     var prefersNavigationBarSeparatorLineHidden: Bool {
         return true
@@ -68,7 +68,7 @@ extension TransactionViewController: ContainerViewControllerDelegate {
     
 }
 
-extension TransactionViewController: UITableViewDataSource {
+extension SnapshotViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contents.count
@@ -83,7 +83,7 @@ extension TransactionViewController: UITableViewDataSource {
     
 }
 
-extension TransactionViewController: UITableViewDelegate {
+extension SnapshotViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -128,7 +128,7 @@ extension TransactionViewController: UITableViewDelegate {
     
 }
 
-extension TransactionViewController {
+extension SnapshotViewController {
     
     private func makeContents() {
         contents = []

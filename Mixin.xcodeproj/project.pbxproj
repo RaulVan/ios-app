@@ -296,6 +296,10 @@
 		7BC3559F2265B7C30073C7BF /* DragDownIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3559E2265B7C30073C7BF /* DragDownIndicator.swift */; };
 		7BC51F042227E69B0032BA15 /* InteractiveDismissResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC51F032227E69B0032BA15 /* InteractiveDismissResponder.swift */; };
 		7BC681AA1FA1DD5600BAB85F /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC681A91FA1DD5600BAB85F /* UsernameViewController.swift */; };
+		7BC7188322B3BD6600B6C835 /* SnapshotInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC7188222B3BD6600B6C835 /* SnapshotInfoView.xib */; };
+		7BC7188522B3BE2700B6C835 /* SnapshotInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188422B3BE2700B6C835 /* SnapshotInfoView.swift */; };
+		7BC7188722B3C30D00B6C835 /* AvatarSnapshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188622B3C30D00B6C835 /* AvatarSnapshotCell.swift */; };
+		7BC7188922B3CB1100B6C835 /* AllTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188822B3CB1100B6C835 /* AllTransactionsViewController.swift */; };
 		7BC80A62221D1C07008586AD /* AssetTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC80A61221D1C06008586AD /* AssetTableHeaderView.swift */; };
 		7BC8503020CBA69B00A57B83 /* MXNOggOpusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8502320CBA69900A57B83 /* MXNOggOpusReader.m */; };
 		7BC8503120CBA69B00A57B83 /* MXNOggOpusError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8502420CBA69900A57B83 /* MXNOggOpusError.m */; };
@@ -307,7 +311,6 @@
 		7BC98FA721EF5B8C004A5D79 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC98FA621EF5B8C004A5D79 /* AudioManager.swift */; };
 		7BCA3A572057F08E007617C1 /* CATransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCA3A562057F08E007617C1 /* CATransactionExtension.swift */; };
 		7BCAF54A216B0C3700D6564A /* GiphyCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCAF549216B0C3700D6564A /* GiphyCollectionViewFlowLayout.swift */; };
-		7BCE296621AC132E00B1A507 /* SnapshotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BCE296521AC132E00B1A507 /* SnapshotCell.xib */; };
 		7BD0532820A41F6A00C36F69 /* RangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD0532720A41F6A00C36F69 /* RangeExtension.swift */; };
 		7BD0532A20A435D300C36F69 /* CoreTextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD0532920A435D300C36F69 /* CoreTextExtension.swift */; };
 		7BD150E22160C1560019FD5B /* GiphyCoreSDKExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD150E12160C1560019FD5B /* GiphyCoreSDKExtension.swift */; };
@@ -408,7 +411,7 @@
 		DF121F331FA1C778000F701D /* ConversationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF121F321FA1C778000F701D /* ConversationCell.xib */; };
 		DF121F351FA1C809000F701D /* CornerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF121F341FA1C809000F701D /* CornerImageView.swift */; };
 		DF138975200493C300869685 /* QRCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF138974200493C300869685 /* QRCodeResponse.swift */; };
-		DF16681E20A6F84200C45E31 /* AllTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16681D20A6F84200C45E31 /* AllTransactionsViewController.swift */; };
+		DF16681E20A6F84200C45E31 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16681D20A6F84200C45E31 /* TransactionsViewController.swift */; };
 		DF17B50C2052433B006447C2 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF17B50B2052433B006447C2 /* MessageItem.swift */; };
 		DF17B51320525485006447C2 /* ConversationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF17B51220525485006447C2 /* ConversationItem.swift */; };
 		DF17B51520525B47006447C2 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF17B51420525B47006447C2 /* ArrayExtension.swift */; };
@@ -537,7 +540,7 @@
 		DF7FB63A22801B4E00F4782F /* TransferRecallData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7FB63922801B4E00F4782F /* TransferRecallData.swift */; };
 		DF81413220C51D5E00E89DE8 /* PhotoLibraryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81413120C51D5E00E89DE8 /* PhotoLibraryExtension.swift */; };
 		DF84777820DA5A1200DE5163 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF84777720DA5A1200DE5163 /* RecordButton.swift */; };
-		DF8794942074FB4E004A1E55 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8794932074FB4E004A1E55 /* TransactionViewController.swift */; };
+		DF8794942074FB4E004A1E55 /* SnapshotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8794932074FB4E004A1E55 /* SnapshotViewController.swift */; };
 		DF87949C207505F4004A1E55 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87949B207505F4004A1E55 /* TransactionCell.swift */; };
 		DF8CECD71FC2EE4200E40064 /* PayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8CECD61FC2EE4200E40064 /* PayWindow.swift */; };
 		DF8CECE11FC3054700E40064 /* TransferTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8CECE01FC3054700E40064 /* TransferTypeCell.swift */; };
@@ -965,6 +968,10 @@
 		7BC3559E2265B7C30073C7BF /* DragDownIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDownIndicator.swift; sourceTree = "<group>"; };
 		7BC51F032227E69B0032BA15 /* InteractiveDismissResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDismissResponder.swift; sourceTree = "<group>"; };
 		7BC681A91FA1DD5600BAB85F /* UsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
+		7BC7188222B3BD6600B6C835 /* SnapshotInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SnapshotInfoView.xib; sourceTree = "<group>"; };
+		7BC7188422B3BE2700B6C835 /* SnapshotInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotInfoView.swift; sourceTree = "<group>"; };
+		7BC7188622B3C30D00B6C835 /* AvatarSnapshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSnapshotCell.swift; sourceTree = "<group>"; };
+		7BC7188822B3CB1100B6C835 /* AllTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsViewController.swift; sourceTree = "<group>"; };
 		7BC80A61221D1C06008586AD /* AssetTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTableHeaderView.swift; sourceTree = "<group>"; };
 		7BC8502320CBA69900A57B83 /* MXNOggOpusReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXNOggOpusReader.m; sourceTree = "<group>"; };
 		7BC8502420CBA69900A57B83 /* MXNOggOpusError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXNOggOpusError.m; sourceTree = "<group>"; };
@@ -990,7 +997,6 @@
 		7BC98FA621EF5B8C004A5D79 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		7BCA3A562057F08E007617C1 /* CATransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATransactionExtension.swift; sourceTree = "<group>"; };
 		7BCAF549216B0C3700D6564A /* GiphyCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		7BCE296521AC132E00B1A507 /* SnapshotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SnapshotCell.xib; sourceTree = "<group>"; };
 		7BD0532720A41F6A00C36F69 /* RangeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeExtension.swift; sourceTree = "<group>"; };
 		7BD0532920A435D300C36F69 /* CoreTextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTextExtension.swift; sourceTree = "<group>"; };
 		7BD150E12160C1560019FD5B /* GiphyCoreSDKExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyCoreSDKExtension.swift; sourceTree = "<group>"; };
@@ -1092,7 +1098,7 @@
 		DF121F321FA1C778000F701D /* ConversationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationCell.xib; sourceTree = "<group>"; };
 		DF121F341FA1C809000F701D /* CornerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerImageView.swift; sourceTree = "<group>"; };
 		DF138974200493C300869685 /* QRCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeResponse.swift; sourceTree = "<group>"; };
-		DF16681D20A6F84200C45E31 /* AllTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsViewController.swift; sourceTree = "<group>"; };
+		DF16681D20A6F84200C45E31 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		DF17B50B2052433B006447C2 /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
 		DF17B51220525485006447C2 /* ConversationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationItem.swift; sourceTree = "<group>"; };
 		DF17B51420525B47006447C2 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -1227,7 +1233,7 @@
 		DF7FB63922801B4E00F4782F /* TransferRecallData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRecallData.swift; sourceTree = "<group>"; };
 		DF81413120C51D5E00E89DE8 /* PhotoLibraryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryExtension.swift; sourceTree = "<group>"; };
 		DF84777720DA5A1200DE5163 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
-		DF8794932074FB4E004A1E55 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		DF8794932074FB4E004A1E55 /* SnapshotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewController.swift; sourceTree = "<group>"; };
 		DF87949B207505F4004A1E55 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		DF8CECCE1FC2B1C900E40064 /* Mixin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixin-Bridging-Header.h"; sourceTree = "<group>"; };
 		DF8CECD61FC2EE4200E40064 /* PayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWindow.swift; sourceTree = "<group>"; };
@@ -2321,8 +2327,10 @@
 				7B71F5252191CC1500F93B98 /* WalletHeaderView.swift */,
 				7BEC4DF021A7D054003336F2 /* AssetCell.xib */,
 				7B9916D321945A6800C11401 /* AssetCell.swift */,
-				7BCE296521AC132E00B1A507 /* SnapshotCell.xib */,
+				7BC7188222B3BD6600B6C835 /* SnapshotInfoView.xib */,
+				7BC7188422B3BE2700B6C835 /* SnapshotInfoView.swift */,
 				7BC2D27C21992FA8002FAC1D /* SnapshotCell.swift */,
+				7BC7188622B3C30D00B6C835 /* AvatarSnapshotCell.swift */,
 				7B0BE45F21A5630500B91A1E /* SearchAssetCell.swift */,
 			);
 			path = Cells;
@@ -2475,8 +2483,9 @@
 				7B0BE45D21A55E6C00B91A1E /* AddAssetViewController.swift */,
 				7BFD34592285A7F000524EA0 /* TransferReceiverViewController.swift */,
 				DF5BF55E1FBB281E0092AFB8 /* AssetViewController.swift */,
-				DF8794932074FB4E004A1E55 /* TransactionViewController.swift */,
-				DF16681D20A6F84200C45E31 /* AllTransactionsViewController.swift */,
+				DF8794932074FB4E004A1E55 /* SnapshotViewController.swift */,
+				DF16681D20A6F84200C45E31 /* TransactionsViewController.swift */,
+				7BC7188822B3CB1100B6C835 /* AllTransactionsViewController.swift */,
 				DF9E66E4205B9AF300F1A0B9 /* HiddenAssetViewController.swift */,
 				DF5BF5601FBB2D490092AFB8 /* DepositViewController.swift */,
 				DF754CB71FBC7F1200F2F2E5 /* WalletPasswordViewController.swift */,
@@ -2750,7 +2759,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				274264A920011C79000A8808 /* mixin.caf in Resources */,
-				7BCE296621AC132E00B1A507 /* SnapshotCell.xib in Resources */,
 				277FF70F1F909A1200DBB2EB /* LaunchScreen.storyboard in Resources */,
 				DF5D9F441F9CD29A0036D5FD /* Localizable.strings in Resources */,
 				7B2E3E481FA07F2E00DDDDEB /* Login.storyboard in Resources */,
@@ -2798,6 +2806,7 @@
 				7BF52B232199AC2E007A5A74 /* NoTransactionFooterView.xib in Resources */,
 				7BD639CB2282B17B00B7B3A6 /* PeerView.xib in Resources */,
 				DF3F6D6920EF2618006D0CBC /* QrcodeWindow.xib in Resources */,
+				7BC7188322B3BD6600B6C835 /* SnapshotInfoView.xib in Resources */,
 				DF6ABB142295019C00A012B2 /* AddressWindow.xib in Resources */,
 				7B2E3E541FA07FA300DDDDEB /* CountryCode.plist in Resources */,
 				DFE356B51FB4990100E0E3A8 /* Setting.storyboard in Resources */,
@@ -2973,6 +2982,7 @@
 				7B06F9A22201CE1B0058DE94 /* BackupAvailabilityQuery.swift in Sources */,
 				9BB351671FB19ECB00EDDD2C /* ConversationDateHeaderView.swift in Sources */,
 				27382EC61FECDF0D00437A1B /* PreKeyUtil.swift in Sources */,
+				7BC7188722B3C30D00B6C835 /* AvatarSnapshotCell.swift in Sources */,
 				DF2819752014669E001EE5FA /* RefreshAccountJob.swift in Sources */,
 				DF768563200647CC0055F3FF /* BouncingButton.swift in Sources */,
 				7BF5374920076BB500257D6C /* ShutterAnimationView.swift in Sources */,
@@ -3011,6 +3021,7 @@
 				273FACC6205FB9A800513327 /* SessionStoreWrapper.swift in Sources */,
 				7B56DBD11FEFC5B900B50D82 /* PinField.swift in Sources */,
 				7B2E3E581FA0815B00DDDDEB /* LoginNavigationController.swift in Sources */,
+				7BC7188922B3CB1100B6C835 /* AllTransactionsViewController.swift in Sources */,
 				DF4D15CC217EE93200CA602F /* MixinRequest.swift in Sources */,
 				7BA9D9C8226DE71E00255943 /* NavigationAvatarIconView.swift in Sources */,
 				DFE356B31FB498D600E0E3A8 /* PhoneContactAPI.swift in Sources */,
@@ -3067,6 +3078,7 @@
 				7BE0726E2024A2AC00D7B44D /* AppButtonGroupMessageCell.swift in Sources */,
 				7BC26534207B595500EA7DFF /* ContactMessageCell.swift in Sources */,
 				DF6068C720BECD3100C38C64 /* AssetSendViewController.swift in Sources */,
+				7BC7188522B3BE2700B6C835 /* SnapshotInfoView.swift in Sources */,
 				7B11788C2293D53B000F934E /* BalanceInputAccessoryView.swift in Sources */,
 				7B7B2BC51FB15B6A0002BED5 /* AvatarImageView.swift in Sources */,
 				DF17B51520525B47006447C2 /* ArrayExtension.swift in Sources */,
@@ -3387,7 +3399,7 @@
 				DF03C88B1FF3A58C00C1ED6B /* GroupInviteCell.swift in Sources */,
 				7B9F06C620A9858D0095A51B /* VideoMessageViewModel.swift in Sources */,
 				DFBC04A1200397B0008CA56A /* SentSenderKey.swift in Sources */,
-				DF8794942074FB4E004A1E55 /* TransactionViewController.swift in Sources */,
+				DF8794942074FB4E004A1E55 /* SnapshotViewController.swift in Sources */,
 				7B97BA0C2019D7570013D58F /* AlbumCollectionViewCell.swift in Sources */,
 				DFD5F6F720722C8F0017AAF1 /* PinTokenResponse.swift in Sources */,
 				7B28FA12201195A10023B28D /* StickerMessageCell.swift in Sources */,
@@ -3413,7 +3425,7 @@
 				7BE6E16C218089F100C32EE5 /* GCDExtension.swift in Sources */,
 				7B84358920D8DC2E00237242 /* QuoteTextMessageCell.swift in Sources */,
 				DFF2145D209AC7D400612234 /* ConerLabel.swift in Sources */,
-				DF16681E20A6F84200C45E31 /* AllTransactionsViewController.swift in Sources */,
+				DF16681E20A6F84200C45E31 /* TransactionsViewController.swift in Sources */,
 				7B9553412243860C00CE95E6 /* PinValidationPresentationController.swift in Sources */,
 				DF8CECD71FC2EE4200E40064 /* PayWindow.swift in Sources */,
 				7BB633DF22702D0500A106D2 /* SearchCancelButton.swift in Sources */,
