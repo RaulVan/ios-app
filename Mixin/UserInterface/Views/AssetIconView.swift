@@ -50,10 +50,10 @@ class AssetIconView: UIView {
         chainImageView.image = nil
     }
     
-    func setIcon(asset: AssetItem) {
-        iconImageView.sd_setImage(with: URL(string: asset.iconUrl), completed: nil)
+    func setIcon(assetIconUrl: String, chainIconUrl: String?) {
+        iconImageView.sd_setImage(with: URL(string: assetIconUrl), completed: nil)
         let shouldHideChainIcon: Bool
-        if let str = asset.chainIconUrl, let url = URL(string: str) {
+        if let str = chainIconUrl, let url = URL(string: str) {
             chainImageView.sd_setImage(with: url, completed: nil)
             shouldHideChainIcon = false
         } else {
@@ -63,6 +63,10 @@ class AssetIconView: UIView {
             updateShadowPath(chainIconIsHidden: shouldHideChainIcon)
         }
         chainIconIsHidden = shouldHideChainIcon
+    }
+    
+    func setIcon(asset: AssetItem) {
+        setIcon(assetIconUrl: asset.iconUrl, chainIconUrl: asset.chainIconUrl)
     }
     
     private func prepare() {

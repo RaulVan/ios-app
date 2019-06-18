@@ -4,7 +4,6 @@ class SnapshotInfoView: UIView {
     
     @IBOutlet weak var pendingDepositProgressView: UIView!
     @IBOutlet weak var iconWrapperView: UIView!
-    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var amountLabel: InsetLabel!
     @IBOutlet weak var symbolLabel: UILabel!

@@ -1,8 +1,14 @@
 import UIKit
 
+protocol AvatarSnapshotCellDelegate: class {
+    func avatarSnapshotCellDidSelectIcon(_ cell: AvatarSnapshotCell)
+}
+
 class AvatarSnapshotCell: SnapshotCell {
     
-    let avatarImageView = AvatarImageView(frame: CGRect(x: 0, y: 0, width: 42, height: 42))
+    weak var delegate: AvatarSnapshotCellDelegate?
+    
+    private let avatarImageView = AvatarImageView(frame: CGRect(x: 0, y: 0, width: 42, height: 42))
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -27,6 +33,16 @@ class AvatarSnapshotCell: SnapshotCell {
         avatarImageView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        let avatarButton = UIButton()
+        infoView.iconWrapperView.addSubview(avatarButton)
+        avatarButton.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        avatarButton.addTarget(self, action: #selector(selectIconAction), for: .touchUpInside)
+    }
+    
+    @objc func selectIconAction() {
+        delegate?.avatarSnapshotCellDidSelectIcon(self)
     }
     
 }

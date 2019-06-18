@@ -300,6 +300,7 @@
 		7BC7188522B3BE2700B6C835 /* SnapshotInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188422B3BE2700B6C835 /* SnapshotInfoView.swift */; };
 		7BC7188722B3C30D00B6C835 /* AvatarSnapshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188622B3C30D00B6C835 /* AvatarSnapshotCell.swift */; };
 		7BC7188922B3CB1100B6C835 /* AllTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188822B3CB1100B6C835 /* AllTransactionsViewController.swift */; };
+		7BC7188B22B3D06000B6C835 /* AssetSnapshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC7188A22B3D06000B6C835 /* AssetSnapshotCell.swift */; };
 		7BC80A62221D1C07008586AD /* AssetTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC80A61221D1C06008586AD /* AssetTableHeaderView.swift */; };
 		7BC8503020CBA69B00A57B83 /* MXNOggOpusReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8502320CBA69900A57B83 /* MXNOggOpusReader.m */; };
 		7BC8503120CBA69B00A57B83 /* MXNOggOpusError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8502420CBA69900A57B83 /* MXNOggOpusError.m */; };
@@ -972,6 +973,7 @@
 		7BC7188422B3BE2700B6C835 /* SnapshotInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotInfoView.swift; sourceTree = "<group>"; };
 		7BC7188622B3C30D00B6C835 /* AvatarSnapshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSnapshotCell.swift; sourceTree = "<group>"; };
 		7BC7188822B3CB1100B6C835 /* AllTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsViewController.swift; sourceTree = "<group>"; };
+		7BC7188A22B3D06000B6C835 /* AssetSnapshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSnapshotCell.swift; sourceTree = "<group>"; };
 		7BC80A61221D1C06008586AD /* AssetTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTableHeaderView.swift; sourceTree = "<group>"; };
 		7BC8502320CBA69900A57B83 /* MXNOggOpusReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXNOggOpusReader.m; sourceTree = "<group>"; };
 		7BC8502420CBA69900A57B83 /* MXNOggOpusError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXNOggOpusError.m; sourceTree = "<group>"; };
@@ -2331,6 +2333,7 @@
 				7BC7188422B3BE2700B6C835 /* SnapshotInfoView.swift */,
 				7BC2D27C21992FA8002FAC1D /* SnapshotCell.swift */,
 				7BC7188622B3C30D00B6C835 /* AvatarSnapshotCell.swift */,
+				7BC7188A22B3D06000B6C835 /* AssetSnapshotCell.swift */,
 				7B0BE45F21A5630500B91A1E /* SearchAssetCell.swift */,
 			);
 			path = Cells;
@@ -3042,6 +3045,7 @@
 				7B61EB8F20978856001C1985 /* AttachmentEncryptingInputStream.swift in Sources */,
 				7B8ED48021198EC20039946B /* StickerInputModelController.swift in Sources */,
 				7B28FA16201196DD0023B28D /* DataMessageViewModel.swift in Sources */,
+				7BC7188B22B3D06000B6C835 /* AssetSnapshotCell.swift in Sources */,
 				7B59534F2267215B00D59DB4 /* BottomShadowView.swift in Sources */,
 				7B6EC8FC20A91543009A7020 /* VideoUploadJob.swift in Sources */,
 				DF503D411FED162300C008E7 /* MixinPreKeyStore.swift in Sources */,

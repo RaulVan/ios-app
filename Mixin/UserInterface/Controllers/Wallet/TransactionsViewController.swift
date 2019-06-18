@@ -50,10 +50,9 @@ class TransactionsViewController<CellType: SnapshotCell>: UITableViewController 
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId, for: indexPath) as! AvatarSnapshotCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId, for: indexPath) as! CellType
         let snapshot = dataSource.snapshots[indexPath.section][indexPath.row]
         cell.render(snapshot: snapshot)
-        cell.delegate = self
         return cell
     }
     
@@ -120,28 +119,6 @@ extension TransactionsViewController: AssetFilterViewControllerDelegate {
     func assetFilterViewController(_ controller: AssetFilterViewController, didApplySort sort: Snapshot.Sort, filter: Snapshot.Filter) {
         tableView.setContentOffset(.zero, animated: false)
         dataSource.setSort(sort, filter: filter)
-    }
-    
-}
-
-extension TransactionsViewController: SnapshotCellDelegate {
-    
-    func walletSnapshotCellDidSelectIcon(_ cell: SnapshotCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else {
-            return
-        }
-        let snapshot = dataSource.snapshots[indexPath.section][indexPath.row]
-        guard snapshot.type == SnapshotType.transfer.rawValue, let userId = snapshot.opponentUserId else {
-            return
-        }
-        DispatchQueue.global().async {
-            guard let user = UserDAO.shared.getUser(userId: userId), user.isCreatedByMessenger else {
-                return
-            }
-            DispatchQueue.main.async {
-                UserWindow.instance().updateUser(user: user).presentView()
-            }
-        }
     }
     
 }

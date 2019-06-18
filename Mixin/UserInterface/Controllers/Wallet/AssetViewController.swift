@@ -201,9 +201,9 @@ extension AssetViewController: AssetFilterViewControllerDelegate {
     
 }
 
-extension AssetViewController: SnapshotCellDelegate {
+extension AssetViewController: AvatarSnapshotCellDelegate {
     
-    func walletSnapshotCellDidSelectIcon(_ cell: SnapshotCell) {
+    func avatarSnapshotCellDidSelectIcon(_ cell: AvatarSnapshotCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }

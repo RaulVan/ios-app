@@ -21,19 +21,10 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qe-6k-3Eu">
                     <rect key="frame" x="19" y="10" width="42" height="42"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0j-e3-F0C">
-                            <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
-                        </button>
-                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="4qe-6k-3Eu" secondAttribute="height" multiplier="1:1" id="8hP-zU-rsb"/>
-                        <constraint firstItem="G0j-e3-F0C" firstAttribute="leading" secondItem="4qe-6k-3Eu" secondAttribute="leading" id="VAv-De-ior"/>
-                        <constraint firstAttribute="trailing" secondItem="G0j-e3-F0C" secondAttribute="trailing" id="be8-fh-oSH"/>
-                        <constraint firstAttribute="bottom" secondItem="G0j-e3-F0C" secondAttribute="bottom" id="dZr-gP-xRo"/>
                         <constraint firstAttribute="height" constant="42" id="oAM-TL-IEp"/>
-                        <constraint firstItem="G0j-e3-F0C" firstAttribute="top" secondItem="4qe-6k-3Eu" secondAttribute="top" id="vbQ-k4-w3m"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WQE-nF-HKX">
@@ -76,7 +67,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="amountLabel" destination="JQ8-gM-RMa" id="DZx-aC-jly"/>
-                <outlet property="iconButton" destination="G0j-e3-F0C" id="TjQ-Hl-FjF"/>
                 <outlet property="iconWrapperView" destination="4qe-6k-3Eu" id="x07-qD-iLb"/>
                 <outlet property="iconWrapperViewHeightConstraint" destination="oAM-TL-IEp" id="Yef-pU-oGL"/>
                 <outlet property="pendingDepositProgressConstraint" destination="BEP-E0-1ol" id="4Rx-R2-cdH"/>

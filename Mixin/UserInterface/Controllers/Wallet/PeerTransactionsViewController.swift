@@ -1,6 +1,6 @@
 import UIKit
 
-class PeerTransactionsViewController: AllTransactionsViewController {
+class PeerTransactionsViewController: TransactionsViewController<AssetSnapshotCell> {
     
     class func instance(opponentId: String) -> UIViewController {
         let vc = PeerTransactionsViewController(category: .user(id: opponentId))

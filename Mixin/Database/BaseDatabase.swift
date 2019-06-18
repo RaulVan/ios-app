@@ -85,7 +85,7 @@ class BaseDatabase {
         return try! database.tryGetValue(on: type.Properties.all[0].asColumn(), fromTable: type.tableName, where: condition).type != .null
     }
     
-    func getCodables<T: TableCodable>(on propertyConvertibleList: [PropertyConvertible] = T.Properties.all, sql: String, values: [ColumnEncodable] = []) -> [T] {
+    func getCodables<T: TableDecodable>(on propertyConvertibleList: [PropertyConvertible] = T.Properties.all, sql: String, values: [ColumnEncodable] = []) -> [T] {
         return try! database.execQuery(on: propertyConvertibleList, sql: sql, values: values).allObjects()
     }
     
