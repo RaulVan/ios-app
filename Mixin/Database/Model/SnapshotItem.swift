@@ -15,6 +15,8 @@ struct SnapshotItem: TableDecodable {
     let createdAt: String
     
     let assetSymbol: String?
+    let assetIconUrl: String?
+    let assetChainIconUrl: String?
     
     let opponentUserId: String?
     let opponentUserFullName: String?
@@ -36,6 +38,8 @@ struct SnapshotItem: TableDecodable {
         case createdAt = "created_at"
         
         case assetSymbol = "symbol"
+        case assetIconUrl = "icon_url"
+        case assetChainIconUrl = "chain_icon_url"
         
         case opponentUserId = "user_id"
         case opponentUserFullName = "full_name"

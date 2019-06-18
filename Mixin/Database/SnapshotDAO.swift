@@ -6,92 +6,68 @@ final class SnapshotDAO {
     
     private let createdAt = Snapshot.Properties.createdAt.in(table: Snapshot.tableName)
     
+    private let selectSql = """
+SELECT snapshots.*, assets.symbol, assets.icon_url, chain.icon_url as chain_icon_url, users.user_id, users.full_name, users.avatar_url, users.identity_number
+FROM snapshots
+LEFT JOIN assets ON snapshots.asset_id = assets.asset_id
+LEFT JOIN users ON snapshots.opponent_id = users.user_id
+LEFT JOIN assets AS chain ON assets.chain_id = chain.asset_id
+"""
+    
     func getSnapshots(assetId: String? = nil, below location: SnapshotItem? = nil, sort: Snapshot.Sort, filter: Snapshot.Filter, limit: Int) -> [SnapshotItem] {
-        let amount = Snapshot.Properties.amount.in(table: Snapshot.tableName)
-        return getSnapshotsAndRefreshCorrespondingAssetIfNeeded { (statement) -> (StatementSelect) in
-            var stmt = statement
-            var condition = Expression(booleanLiteral: true)
-            if let assetId = assetId {
-                condition = condition && Snapshot.Properties.assetId.in(table: Snapshot.tableName) == assetId
-            }
-            switch sort {
-            case .createdAt:
-                if let location = location {
-                    condition = condition && createdAt < location.createdAt
-                }
-            case .amount:
-                if let location = location {
-                    let absAmount = amount.abs()
-                    let locationAbsAmount = Expression(stringLiteral: location.amount).abs()
-                    let isBelowLocation = absAmount < locationAbsAmount
-                        || (absAmount == locationAbsAmount && createdAt < location.createdAt)
-                    condition = condition && isBelowLocation
-                }
-            }
-            
-            if filter != .all {
-                let types = filter.snapshotTypes.map({ $0.rawValue })
-                let typeConstraint = Snapshot.Properties.type.in(table: Snapshot.tableName).in(types)
-                condition = condition && typeConstraint
-            }
-            
-            stmt.where(condition)
-            switch sort {
-            case .createdAt:
-                stmt = stmt.order(by: createdAt.asOrder(by: .descending))
-            case .amount:
-                stmt = stmt.order(by: [amount.abs().asOrder(by: .descending), createdAt.asOrder(by: .descending)])
-            }
-            stmt = stmt.limit(limit)
-            return stmt
+        var sql = selectSql
+        
+        var conditions: [String] = []
+        var args: [ColumnEncodable] = []
+        
+        if let assetId = assetId {
+            conditions.append("snapshots.asset_id = ?")
+            args.append(assetId)
         }
+        
+        let sortAndFilter = self.conditions(sort: sort, filter: filter, location: location)
+        conditions.append(contentsOf: sortAndFilter.conditions)
+        args.append(contentsOf: sortAndFilter.args)
+        
+        if !conditions.isEmpty {
+            let condition = conditions.joined(separator: " AND ")
+            sql += " WHERE " + condition
+        }
+        
+        sql += orderBySql(sort: sort)
+        sql += limitSql(limit: limit)
+        
+        print(sql)
+        return getSnapshotsAndRefreshCorrespondingAssetIfNeeded(sql: sql, values: args)
     }
     
     func getSnapshots(opponentId: String, below location: SnapshotItem? = nil, sort: Snapshot.Sort, filter: Snapshot.Filter, limit: Int) -> [SnapshotItem] {
-        let amount = Snapshot.Properties.amount.in(table: Snapshot.tableName)
-        return getSnapshotsAndRefreshCorrespondingAssetIfNeeded { (statement) -> (StatementSelect) in
-            var stmt = statement
-            var condition = Expression(booleanLiteral: true)
-            condition = condition && Snapshot.Properties.opponentId.in(table: Snapshot.tableName) == opponentId
-            switch sort {
-            case .createdAt:
-                if let location = location {
-                    condition = condition && createdAt < location.createdAt
-                }
-            case .amount:
-                if let location = location {
-                    let absAmount = amount.abs()
-                    let locationAbsAmount = Expression(stringLiteral: location.amount).abs()
-                    let isBelowLocation = absAmount < locationAbsAmount
-                        || (absAmount == locationAbsAmount && createdAt < location.createdAt)
-                    condition = condition && isBelowLocation
-                }
-            }
-            
-            if filter != .all {
-                let types = filter.snapshotTypes.map({ $0.rawValue })
-                let typeConstraint = Snapshot.Properties.type.in(table: Snapshot.tableName).in(types)
-                condition = condition && typeConstraint
-            }
-            
-            stmt.where(condition)
-            switch sort {
-            case .createdAt:
-                stmt = stmt.order(by: createdAt.asOrder(by: .descending))
-            case .amount:
-                stmt = stmt.order(by: [amount.abs().asOrder(by: .descending), createdAt.asOrder(by: .descending)])
-            }
-            stmt = stmt.limit(limit)
-            return stmt
-        }
+        var sql = selectSql
+        
+        var conditions: [String] = ["snapshots.opponent_id = ?"]
+        var args: [ColumnEncodable] = [opponentId]
+        
+        let sortAndFilter = self.conditions(sort: sort, filter: filter, location: location)
+        conditions.append(contentsOf: sortAndFilter.conditions)
+        args.append(contentsOf: sortAndFilter.args)
+        
+        let condition = conditions.joined(separator: " AND ")
+        sql += " WHERE " + condition
+        
+        sql += orderBySql(sort: sort)
+        sql += limitSql(limit: limit)
+        
+        print(sql)
+        return getSnapshotsAndRefreshCorrespondingAssetIfNeeded(sql: sql, values: args)
     }
     
     func getSnapshot(snapshotId: String) -> SnapshotItem? {
-        return getSnapshotsAndRefreshCorrespondingAssetIfNeeded(prepare: { (stmt) -> (StatementSelect) in
-            stmt.where(Snapshot.Properties.snapshotId.in(table: Snapshot.tableName) == snapshotId)
-                .order(by: createdAt.asOrder(by: .descending))
-                .limit(1)
-        }).first
+        let sql = selectSql
+            + " WHERE snapshots.snapshot_id = ?"
+            + " ORDER BY snapshots.created_at DESC"
+            + limitSql(limit: 1)
+        print(sql)
+        return getSnapshotsAndRefreshCorrespondingAssetIfNeeded(sql: sql, values: [snapshotId]).first
     }
     
     func insertOrReplaceSnapshots(snapshots: [Snapshot], userInfo: [AnyHashable: Any]? = nil) {
@@ -121,23 +97,8 @@ final class SnapshotDAO {
 
 extension SnapshotDAO {
     
-    private func getSnapshotsAndRefreshCorrespondingAssetIfNeeded(prepare: (StatementSelect) -> (StatementSelect)) -> [SnapshotItem] {
-        let columns = Snapshot.Properties.all.map({ $0.in(table: Snapshot.tableName) })
-            + [Asset.Properties.symbol.in(table: Asset.tableName),
-               User.Properties.userId.in(table: User.tableName),
-               User.Properties.fullName.in(table: User.tableName),
-               User.Properties.avatarUrl.in(table: User.tableName),
-               User.Properties.identityNumber.in(table: User.tableName)]
-        let joinedTable = JoinClause(with: Snapshot.tableName)
-            .join(Asset.tableName, with: .left)
-            .on(Snapshot.Properties.assetId.in(table: Snapshot.tableName)
-                == Asset.Properties.assetId.in(table: Asset.tableName))
-            .join(User.tableName, with: .left)
-            .on(Snapshot.Properties.opponentId.in(table: Snapshot.tableName)
-                == User.Properties.userId.in(table: User.tableName))
-        var stmt = StatementSelect().select(columns).from(joinedTable)
-        stmt = prepare(stmt)
-        let snapshots: [SnapshotItem] = MixinDatabase.shared.getCodables(statement: stmt)
+    private func getSnapshotsAndRefreshCorrespondingAssetIfNeeded(sql: String, values: [ColumnEncodable]) -> [SnapshotItem] {
+        let snapshots: [SnapshotItem] = MixinDatabase.shared.getCodables(sql: sql, values: values)
         for snapshot in snapshots where snapshot.assetSymbol == nil {
             let job = RefreshAssetsJob(assetId: snapshot.assetId)
             ConcurrentJobQueue.shared.addJob(job: job)
@@ -151,6 +112,44 @@ extension SnapshotDAO {
         }
         let job = RefreshAssetsJob(assetId: snapshot.assetId)
         ConcurrentJobQueue.shared.addJob(job: job)
+    }
+    
+    private func conditions(sort: Snapshot.Sort, filter: Snapshot.Filter, location: SnapshotItem?) -> (conditions: [String], args: [ColumnEncodable]) {
+        var conditions: [String] = []
+        var args: [ColumnEncodable] = []
+        
+        if let location = location {
+            switch sort {
+            case .createdAt:
+                conditions.append("snapshots.created_at < ?")
+                args.append(location.createdAt)
+            case .amount:
+                conditions.append("(ABS(snapshots.amount) < ABS(?) OR (ABS(snapshots.amount) = ABS(?) AND snapshots.created_at < ?))")
+                args.append(contentsOf: [location.amount, location.amount, location.createdAt])
+            }
+        }
+        
+        if filter != .all {
+            let types = filter.snapshotTypes.map({ $0.rawValue })
+            let wildcards = [String](repeating: "?", count: types.count).joined(separator: ",")
+            conditions.append("snapshots.type IN (\(wildcards))")
+            args.append(contentsOf: types)
+        }
+        
+        return (conditions, args)
+    }
+    
+    private func orderBySql(sort: Snapshot.Sort) -> String {
+        switch sort {
+        case .createdAt:
+            return " ORDER BY snapshots.created_at DESC"
+        case .amount:
+            return " ORDER BY ABS(snapshots.amount) DESC, snapshots.created_at DESC"
+        }
+    }
+    
+    private func limitSql(limit: Int) -> String {
+        return " LIMIT \(limit)"
     }
     
 }
