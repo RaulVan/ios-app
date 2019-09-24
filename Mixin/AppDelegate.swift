@@ -328,6 +328,7 @@ extension AppDelegate {
         }
         
         func push() {
+            navigationController.dismiss(animated: true, completion: nil)
             if navigationController.viewControllers.last is CameraViewController {
                 navigationController.popViewController(animated: false)
             }
